@@ -63,25 +63,26 @@
             {{- $res := resources.Get "js/lib/valine/Valine.min.js" | resources.Minify -}}
             <script src="{{ $res.RelPermalink }}"></script>
         {{- end -}}
-        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
         <script type="text/javascript">
-            // Don't ever inject Valine on localhost--it creates unwanted
-            // discussions from "localhost" on your Valine account...
-            new Valine({
-                el: "#vcomments",
-                appId: "{{ .Site.Params.valine.appId }}",
-                appKey: "{{ .Site.Params.valine.appKey }}",
-                meta: ["nick", "mail"],
-                notify: "{{ .Site.Params.valine.notify }}",
-                verify: "{{ .Site.Params.valine.verify }}",
-                avatar: "{{ .Site.Params.valine.avatar }}",
-                placeholder: "{{ .Site.Params.valine.placeholder }}",
-                visitor: "{{ .Site.Params.valine.visitor }}",
-                recordIP: "{{ .Site.Params.valine.recordIP }}",
-                lang: "{{ T `valineLang` }}",
-                visitor: true,
-            });
+            (function () {
+                // Don't ever inject Valine on localhost--it creates unwanted
+                // discussions from "localhost" on your Valine account...
+                if (window.location.hostname == "localhost")
+                    return;
+                new Valine({
+                    el: "#vcomments",
+                    appId: "{{ .Site.Params.valine.appId }}",
+                    appKey: "{{ .Site.Params.valine.appKey }}",
+                    meta: ["nick", "mail"],
+                    notify: "{{ .Site.Params.valine.notify }}",
+                    verify: "{{ .Site.Params.valine.verify }}",
+                    avatar: "{{ .Site.Params.valine.avatar }}",
+                    placeholder: "{{ .Site.Params.valine.placeholder }}",
+                    visitor: "{{ .Site.Params.valine.visitor }}",
+                    recordIP: "{{ .Site.Params.valine.recordIP }}",
+                    lang: "{{ T `valineLang` }}",
+                });
+            })();
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://valine.js.org/">comments powered by Valine.</a></noscript>
     {{- end -}}

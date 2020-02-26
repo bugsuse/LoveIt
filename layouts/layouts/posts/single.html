@@ -76,34 +76,6 @@
             {{- partial "hook/content.html" .Content | safeHTML -}}
         </div>
 
-        <!-- 相关文章 2020.02.09-->
-        <br>
-        <h3>相关文章</h3>
-        {{- $.Scratch.Set "count" 0 -}}
-        {{- $currentPagePermalink := .Permalink -}}
-        {{- $tags := .Params.tags -}}
-        {{- /* range (where .Site.Pages "Section" "tutorials") */ -}}
-        {{- range .Site.Pages -}}
-            {{- $isMatchTags := intersect $tags .Params.tags | len | lt 1 -}}
-            {{- if and $isMatchTags (ne .Permalink $currentPagePermalink) -}}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-                {{- $.Scratch.Add "count" 1 -}}
-            {{- end -}}
-        {{- end -}}
-
-        {{- if eq ($.Scratch.Get "count") 0 -}}
-            {{- $.Scratch.Set "limit" 0 -}}
-            {{- /* range (where .Site.Pages "Section" "tutorials") */ -}}
-            {{- range .Site.Pages -}}
-            {{- $isMatchTags := intersect $tags .Params.tags | len | lt 0 -}}
-                {{- if and $isMatchTags (ne .Permalink $currentPagePermalink) (lt ($.Scratch.Get "limit") 5) -}}
-                    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-                    {{- $.Scratch.Add "limit" 1 -}}
-                {{- end -}}
-            {{- end -}}
-        {{- end -}}
-        <!-- 相关文章 -->
-
         {{- /* Footer */ -}}
         {{- partial "post/footer.html" . -}}
 

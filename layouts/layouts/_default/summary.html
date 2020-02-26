@@ -1,4 +1,11 @@
 <article class="post" itemscope itemtype="http://schema.org/Article">
+    {{- /* Featured image */ -}}
+    {{- with .Params.featured_image -}}
+        <div class="post-featured-image-preview">
+            {{- $image := $.Params.featured_image_preview | default . -}}
+            {{- partial "image" $image -}}
+        </div>
+    {{- end -}}
 
     {{- /* Title */ -}}
     <h1 class="post-title post-list-title" itemprop="name headline">
@@ -30,26 +37,16 @@
         {{- end -}}
     </div>
 
-      {{- /* Summary content */ -}}
-
-          {{- if .Params.description_as_summary -}}
-              <div class="post-content">
-              {{- if .Params.description -}}
-                  <p>
-                  {{- .Params.description -}}
-                  </p>
-              {{- else -}}
-                  <p>
-                  {{- partial "hook/content.html" .Summary | safeHTML -}}
-                  </p>
-              </div>
-              {{- end -}}
-          {{- else -}}
-              <div class="post-content-image-preview">
-                  <a href="{{ .Permalink }}"><img src={{ .Params.featured_image }}></a>
-                  <!-- {{- partial "hook/content.html" .Summary | safeHTML -}} -->
-              </div>
-          {{- end -}}
+    {{- /* Summary content */ -}}
+    <div class="post-content">
+        {{- if .Params.description_as_summary -}}
+            <p>
+                {{- .Params.description -}}
+            </p>
+        {{- else -}}
+            {{- partial "hook/content.html" .Summary | safeHTML -}}
+        {{- end -}}
+    </div>
 
     {{- /* Footer */ -}}
     <div class="post-footer">

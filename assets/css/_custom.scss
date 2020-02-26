@@ -1,0 +1,103 @@
+#QR {
+    padding-top:20px;
+}
+#QR a {
+    border:0
+}
+#QR img {
+    width:180px;
+    max-width:100%;
+    display:inline-block;
+    margin:.8em 2em 0 2em
+}
+#rewardButton {
+    border:1px solid #ccc;
+    line-height:36px;
+    text-align:center;
+    height:36px;
+    display:block;
+    border-radius:4px;
+    -webkit-transition-duration:.4s;
+    transition-duration:.4s;
+    background-color:#fff;
+    color:#999;
+    margin:0 auto;
+    padding:0 25px
+}
+#rewardButton:hover {
+    color:#f77b83;
+    border-color:#f77b83;
+    outline-style:none
+}
+
+/* 友链样式 */
+.blogroll {
+    padding: 1rem 0;
+    border: 2px solid transparent;
+    border-bottom: 1px dashed var(--color-contrast-low);
+    display: flex;
+}
+.blogroll .friend {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.blogroll .name {
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+.blogroll .excerpt {
+    font-size:14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.blogroll .avatar {
+    width: 4em !important;
+    height: 4em !important;
+    margin:0 !important;
+    margin-right: 1em !important;
+    border-radius:4px;
+}
+
+i {
+  display: inline-block;
+  margin-right: 0.2em;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 3em;
+}
+
+.pagination a {
+  color: #555555;
+}
+
+details {
+  font: 16px "Open Sans", "Arial", sans-serif;
+  width: "100%";
+}
+
+details > summary {
+  padding: 2px 6px;
+  width: "100%";
+  background-color: white;
+  box-shadow: 3px 3px 4px white;
+  list-style: none;
+}
+
+.hidered {
+    color: #808080;
+} 
+
+summary {
+  display: block;
+}
+summary:active{
+    color:#00BFFF;
+}
+summary:hover{
+    color:#00BFFF;
+}
