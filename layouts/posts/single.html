@@ -38,12 +38,14 @@
             </div>
         </div>
 
+        <!--
         {{- /* Featured image */ -}}
         {{- with .Params.featured_image -}}
             <div class="post-featured-image">
                 {{- partial "image" . -}}
             </div>
         {{- end -}}
+        -->
 
         {{- /* TOC */ -}}
         {{- if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) -}}
@@ -86,7 +88,7 @@
         {{- range .Site.Pages -}}
             {{- $isMatchTags := intersect $tags .Params.tags | len | lt 1 -}}
             {{- if and $isMatchTags (ne .Permalink $currentPagePermalink) -}}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
                 {{- $.Scratch.Add "count" 1 -}}
             {{- end -}}
         {{- end -}}
